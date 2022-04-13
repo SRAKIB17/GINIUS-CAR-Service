@@ -7,7 +7,7 @@ const Register = () => {
         const email = event.target.email.value;
         const name = event.target.name.value;
         const password = event.target.password.value;
-        console.log(event.target.email.value, event.target.name.value, event.target.password.value)
+        
     }
     return (
         <div className='w-50 register'>
