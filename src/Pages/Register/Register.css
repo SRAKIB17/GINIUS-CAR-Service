@@ -1,4 +1,4 @@
-.register input{
+.register input:not([type=checkbox]){
     /* display: block; */
     width: 100%;
     height: 50px;
@@ -9,18 +9,8 @@
     background-color: #c9ced7;
     padding: 5px;
 }
-.register input[type=submit]{
-    background-color: #6fa4f4;
-    color: white;
-    border: none;
-    border-radius: 10px;
-}
-.register input[type=submit]:hover{
-    background-color: #0D6EFD;
-    color: white;
-    border: none;
-    border-radius: 10px;
-}
+
+
 .register {
     margin: 0 auto;
 
