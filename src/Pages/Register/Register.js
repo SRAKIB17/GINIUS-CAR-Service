@@ -2,21 +2,26 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import './Register.css'
 
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Sociallogin from '../SocialLogin/Sociallogin';
+import Loading from '../Loading/Loading';
 
 
 const Register = () => {
     const navigate = useNavigate()
 
-    const [
+    let createUserWithEmailAndPassword
+    let user
+    let loading
+    let error
+    [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
-
+    [user,loading] = useAuthState(auth)
     const [updateProfile, updating,updateError] = useUpdateProfile(auth);
 
     const [agree, setAgree] = useState(false)
@@ -33,7 +38,9 @@ const Register = () => {
 
     }
 
-
+    if (loading) {
+        return (<Loading></Loading>)
+    }
     if (user) {
         console.log(user)
         navigate('/') 

@@ -2,6 +2,7 @@ import React from 'react';
 import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loading from '../Loading/Loading';
 
 const Sociallogin = () => {
     let signInWithGoogle;
@@ -19,9 +20,7 @@ const Sociallogin = () => {
             <p className='text-danger'>Error: {error.message}</p>
         </div>
     }
-    if (loading) {
-        errElement = <p>Loading...</p>;
-    }
+    
     if (user) {
         navigate('/')
     }
